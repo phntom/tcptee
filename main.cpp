@@ -12,14 +12,14 @@ int main(int argc, char *argv[])
     tcptee t;
 
     switch (argc) {
+    case 4:
+        t.setMaxConnections(QString(argv[3]).toUInt());
     case 3:
-        t.setMaxConnections(QString(argv[2]).toUInt());
-    case 2:
-        bindhost = QHostAddress(argv[0]);
-        bindport = QString(argv[1]).toUInt();
+        bindhost = QHostAddress(argv[1]);
+        bindport = QString(argv[2]).toUInt();
         break;
-    case 1:
-        bindport = QString(argv[0]).toUInt();
+    case 2:
+        bindport = QString(argv[1]).toUInt();
         break;
     default:
         std::cout << "Usage: tcptee [bindport]" << std::endl
